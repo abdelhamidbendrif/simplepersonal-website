@@ -1,0 +1,134 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculator</title>
+    <link rel="icon" href="pngegg44.png">
+</head>
+<body>
+    <style>
+    body {
+    justify-content: center;
+    background:url(wp2023.jpg);
+		background-size: 110%;
+    background-position: cover;
+	 }
+    h1{
+    text-align: center;
+		margin-top: 5px;
+		color:#040505;
+	  font-size: 50px;
+		font-style: normal;
+		font-family: 'Lucida Sans';
+    font-weight: 600;
+   }
+    .container {
+    background: #ffffff;
+    text-align:right;
+    border-radius: 10px;
+    padding: 30px;
+		margin:auto;
+    max-width: 350px;
+		box-shadow: 20px 25px 5px 0px rgba(17, 17, 17, 0.5);
+   }
+   #result {
+    text-align: right;
+    height: 50px;
+    line-height: 30px;
+    padding: 5% 2%;
+    font-size: 30px;
+   }
+   .bttns {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+   }
+   .bttns div {
+    border: 1px solid #6b6767;
+    
+   }
+   .btn {
+    line-height: 85px;
+    text-align: center;
+    font-size: 25px;
+    cursor: pointer;
+    border-radius:100px ;
+    margin: 2px;
+    background-color: #ffffff;
+   } 
+   #equal {
+    background-color: rgb(57, 111, 165);
+    color: rgb(255, 255, 255);
+    font-size: 35px;
+   }
+   #clear{
+    background-color:rgb(57, 111, 165);
+    color: rgb(255, 255, 255);
+   }
+   .btn:hover {
+    background-color: rgb(153, 153, 153);
+   }
+   #equal:hover{
+    background-color: rgb(0, 0, 255);
+   }
+   #clear:hover{
+    background-color: rgb(0, 0, 255);
+   } 
+    </style>
+     <section>
+       
+        <div class="container">
+            <h1>Calculator</h1><hr>
+            <div id="result">0</div>
+              <div class="bttns">
+              <div class="btn" id="clear">AC</div>
+              <div class="btn">.</div>
+              <div class="btn">0</div>
+              <div class="btn">/</div>
+              <div class="btn">1</div>
+              <div class="btn">2</div>
+              <div class="btn">3</div>
+              <div class="btn">*</div>
+              <div class="btn">4</div>
+              <div class="btn">5</div>
+              <div class="btn">6</div>
+              <div class="btn">+</div>
+              <div class="btn">7</div>
+              <div class="btn">8</div>
+              <div class="btn">9</div>
+              <div class="btn">-</div>
+            </div>
+      <div>
+              <div id="equal" class="btn"><strong>=</strong></div>
+            </div>
+          </div>
+        </section>
+        <script>
+        let result = document.getElementById("result");
+        let buttons = Array.from(document.getElementsByClassName("btn"));
+
+     buttons.map((button) => {
+     button.addEventListener("click", (e) => {
+     if (
+      result.innerText === "0" &&
+      e.target.innerText != "/" &&
+      e.target.innerText != "*"
+        ) {
+      result.innerText ="";
+       }
+     if (e.target.innerText === "AC") {
+      result.innerText ="";
+     } else if (e.target.innerText === "=") {
+      try {
+        result.innerText = eval(result.innerText);
+      } catch {
+        result.innerText = "ERROR.";
+      }
+      } else {
+      result.innerText += e.target.innerText;
+      }
+      });
+      });
+
+        </script>
+    </body>
+</html>

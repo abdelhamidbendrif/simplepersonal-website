@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="Pictures/pngegg44.png">
+    <title>Programmation Web - miniproject</title>
+
+</head>
+<body>
+    <style>
+        * {
+     margin:0;
+     padding: 0;
+     box-sizing: border-box;
+     font-family: 'Poppins', sans-serif;
+        }
+        body{
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            min-height:100vh ;
+            background:url(wp2023.jpg);
+        }
+        header{
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 110px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .name{
+           color: #e1e1e1;
+           font-size: 20px;
+           font-family: Arial;
+           padding-right:5px;
+        }
+    	#photo {
+			width: 100px;
+			height: 100px;
+           border-radius: 50%;
+            margin-left: -10px;
+            float: left;
+		}
+        .logo{
+           color: #ffffff;
+           font-size: 15px;
+           font-family: Arial;
+           padding-right:10px;
+           float: left;
+           padding-top: 10px;
+        }
+        .project{
+           color: #ffffff;
+           font-size: 35px;
+           font-family: Arial;
+           padding-right:1px;
+           float: left;
+           padding-top: 5px;
+        }
+    
+        .navigation .btnLogin-popup {
+            width: 130px;
+            height: 50px;
+            background: transparent;
+            border:2px solid #e1dede;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1.1em;
+            color: #bec1c5;
+            margin-left: 50px;
+            transition: .5s;
+            display: inline;
+            float: left;
+        }
+        .navigation .btnLogin-popup:hover {
+            background: #d2dfd9;
+            color: #162938;
+        }
+            .fa {
+            padding: 1px;
+            font-size: 1px;
+            width: 30px;
+            position: absolute;
+            top: 520px;
+            left:600px;
+            margin:  5px 2px;
+            }
+            .fa:hover {
+            opacity: 0.5;
+            }
+            .instagram{
+            padding: 1px;
+            font-size: 1px;
+            width: 35px;
+            position: absolute;
+            top: 520px;
+            left:650px;
+            text-decoration: none;
+            margin:  5px 2px;
+            }
+            .instagram :hover{
+            opacity: 0.5;
+            }
+    </style>
+    <header>
+        <a href="https://ecours.esta.ac.ma/login/index.php" target="_blank"><img id="photo" src="pngegg44.png"></a>
+        <h2 class="name">Université Ibn Zohr </h2>
+        <h1 class="logo">Ecole Supérieure de Technologie - Agadir</h1>
+        <nav class="navigation">
+            
+<button class="btnLogin-popup" type="submit" onclick="window.location.href='Login.html'">Login</button>
+<button class="btnLogin-popup" type="submit" onclick="window.location.href='sign.html'">Sign Up</button>
+        </nav>
+    </header>    
+    <div class="project">
+        Programmation-Web : miniproject
+    </div>
+
+    <a href="https://www.instagram.com/est.agadir/" target="_blank" ><img class="instagram" src="3692531.png"></a> 
+
+    <a href="https://www.facebook.com/profile.php?id=100063440181482" target="_blank" ><img class="fa fa-facebook"src="2018_social_media_popular_app_logo_facebook-256.webp" ></a> 
+
+</body>
+</html>

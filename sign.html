@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="pngegg44.png">
+    <title>Sign Up</title>
+
+<style>
+   *{
+      font-family: 'Times New Roman', Times, serif;
+   }
+      body {
+			background:url(wp2023.jpg);
+			background-size: 110%;
+         background-position: cover;
+		}
+         h1{
+         text-align: center;
+			margin-top: 5px;
+			color:#040505;
+			font-size: 50px;
+			font-style: normal;
+         font-weight: 700;
+      }
+         #logo {
+			display: block;
+			margin: auto;
+			text-align: center;
+			width: 300px;
+			height: 79px;
+		  }
+        .container{
+           background: #ffffff;
+           text-align: center;
+           border-radius: 10px;
+           padding: 30px;
+		     margin: auto;
+           max-width: 450px;
+		     box-shadow: 20px 25px 5px 0px rgba(0,0,0,0.5);
+      }
+        input[type="text"],
+        input[type="email"],input[type="number"],
+        input[type="tel"],input[type="date"],
+        input[type="password"]{
+			width: 85%;
+			padding: 14px;
+			margin: 14px 0px ;
+         border: 1px solid rgb(255, 255, 255);
+			border-radius: 100px;
+			box-sizing: border-box;
+			box-shadow: 1px 5px 5px 0px rgba(0, 0, 0, 0.5);
+      }
+      button{
+			width: 50%;
+			height:40px;
+			border: 1px solid;
+			background: #433498;
+         border-radius: 25px;
+			font-size: 18px;
+			color: #e9f4fb;
+			font-weight: 700;
+			cursor: pointer;
+		}
+      button:hover{
+         background-color: rgb(24, 209, 238);
+      }
+
+</style>
+</head>
+<body>
+    
+   <form action="Login.html">
+      <div class="container">
+         <a><img id="logo" src="output2.png"></a>
+         <h1>Sign Up</h1>
+         <div>
+         <br>
+         <div>
+            <h2>Name </h2>
+			<span >
+                <ion-icon name="person"></ion-icon>
+            </span>
+		       <input type="text" placeholder="First Name" required >
+	      </div>
+		           <div>
+			<span>
+                <ion-icon name="person"></ion-icon>
+            </span>
+		        <input type="text" placeholder="Last Name"  required>
+		           </div>
+	                	<br>
+                    <div>
+                     <h2>Contact</h2>
+                        <span >
+                            <ion-icon name="mail"></ion-icon>
+                        </span>
+                           <input type="email" id="Email" placeholder="Email Address" required >
+                    </div>
+                        <div>
+                               </div>
+                                    <span>
+                                        <ion-icon name ="person"></ion-icon>
+                                    </span>
+                                        <input type="number" id="cne" placeholder="CNE" required>
+                                                <br> 
+                                                <span> <ion-icon name="call"></ion-icon></span>
+                                                <input type="tel" id="tele" placeholder="phone number" required>
+                                               <br>
+                           <span> <ion-icon name="calendar"></ion-icon></span>
+                              <input type="date" name="trip-start"value="yyyy/mm/dd"min="1990-01-01" max="2030-12-31" required>
+                              <br>
+                              <br>
+                              <h2>Submit</h2>
+                              <span>
+                                <ion-icon name="person"></ion-icon>
+                                <input type="text" id="Username" placeholder="Username" required>
+                              </span>
+                              <br>
+                              <span>
+                                <ion-icon name="lock-closed"></ion-icon>
+                                <input type="password" id="Password" min="8" max="16" placeholder="Password" required>
+                              </span>
+                              <br><br>
+                              <label><input type="checkbox" required>I agree to the terms & conditions</label>
+                            <br><br>
+                          <button type="submit" onclick="addData()">Login</button>
+                    </div>
+          </div>
+          </div>
+         </form>
+     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+	<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+   <script>
+     function addData(){
+      var Username = document.getElementById('Username').value;
+      var Password = document.getElementById('Password').value;
+      localStorage.setItem('userUser',Username);
+      localStorage.setItem('userPass',Password);
+     }
+</script>
+
+</body>
+</html>

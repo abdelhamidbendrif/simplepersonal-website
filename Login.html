@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="icon" href="pngegg44.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Login Page</title>	
+	<style>
+		* {
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+	 font-family: 'Times New Roman', Times, serif;
+        }
+		body {
+			font-family: Arial;
+			background:url(wp2023.jpg);
+			background-size: 110%;
+            background-position: cover;
+		}
+		h1 {
+			text-align: center;
+			margin-top: 5px;
+			color:#040505;
+			font-size: 50px;
+			font-style: normal;
+            font-weight: 700;
+		}
+		form{
+		   background: #ffffff;
+           border-radius: 10px;
+           padding: 40px;
+		   margin: auto;
+		   margin-top: 20px;
+           max-width: 350px;
+		   box-shadow: 20px 25px 5px 0px rgba(0,0,0,0.5);
+		}
+		input[type="text"], input[type="password"] {
+			width: 90%;
+			padding: 15px;
+			height:45px;
+			margin: 18px 0px ;
+			display: inline-block;
+			border:  solid #fefefe;
+			border-radius: 100px;
+			box-sizing: border-box;
+			box-shadow: 1px 5px 5px 0px rgba(0, 0, 0, 0.5);
+		}
+		input[type="button"]{
+			width: 100%;
+			height:45px;
+			border: 1px solid;
+			background: #433498;
+            border-radius: 25px;
+			font-size: 20px;
+			color: #e9f4fb;
+			font-weight: 700;
+			cursor: pointer;
+			
+		}
+		.member_forg {
+			font-size: .9em;
+			color: #263dbd;
+			font-weight: 500;
+			display: flex;
+			justify-content: space-between;
+			margin: 10px;
+
+		}
+		.member_forg label input{
+         accent-color:#5eea12;
+		 margin-right: 5px;
+		}
+		.member_forg a {
+			color:#263dbd;
+			text-decoration: none;
+		}
+		.member_forg a:hover{
+			text-decoration: underline;
+		}
+	
+		input[type="button"]:hover {
+			background-color: rgb(24, 209, 238);
+			transition: .9s;
+		}
+		#logo {
+			display: block;
+			margin: auto;
+			text-align: center;
+			width: 150px;
+			height: 110px;
+		}
+	</style>
+</head>
+<body>
+	<form>
+		<a><img id="logo" src="hamid22.png"></a>
+		<h1> Login Page </h1>
+		<div>
+			<span ><ion-icon name="person"></ion-icon></span>
+		<input type="text" id="Username" name="username" placeholder=" Your Username" required >
+	     </div>
+		<div>
+			<span><ion-icon name ="lock-closed"></ion-icon></span>
+		<input type="password" id="Password" name="password" placeholder=" Your Password" required>
+		</div>
+		<div class="member_forg">
+			<br>
+		<label><input type="checkbox">Remember me </label>
+		<a href="sign.html" target="_self">Sign Up?</a>
+		<br>
+	 </div>
+		<input type="button" name="button" value="Login" onclick="checkData()">
+	</form>
+	<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+	<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+<script>
+	function checkData(){
+		var enterusername =document.getElementById('Username').value;
+		var enterpassword =document.getElementById('Password').value;
+		var getusername=localStorage.getItem('userUser');
+		var getpassword=localStorage.getItem('userPass');
+      if(enterusername == getusername )
+	  {
+		if(enterpassword == getpassword )
+		{
+			alert("Login was successful");
+			document.location.href="bulletin.html"
+		}
+	   else{
+		alert("Wrong password or username");
+	   }
+	  }
+	  else 
+	  {
+		alert("Wrong password or username");
+	  }
+	}
+</script>
+	
+  
+</body>
+</html>

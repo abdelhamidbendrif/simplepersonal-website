@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="pngegg44.png">
+<title>Bulletin</title>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    body {
+        background: url(wp2023.jpg);
+        background-size: cover;
+        font-family: 'Times New Roman', Times, serif;
+    }
+    
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+       
+    }
+    
+    form {
+        border: 1px solid rgb(231, 193, 0);
+        background-color: rgb(255, 255, 255);
+        border-radius: 10px;
+        padding: 20px;
+        width: 600px;
+        margin: 10px;
+    }
+    
+    h1 {
+        font-size: 40px;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    
+    .logo {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+    
+    .logo img {
+        width: 400px;
+        height: 85px;
+    }
+    
+    input[type="text"] {
+        margin: 20px; 
+        width: 60%;
+        padding: 10px;
+        margin: 10px 20px ;
+        border: 1px solid rgb(255, 255, 255);
+        border-radius: 10px;
+        box-sizing: border-box;
+        box-shadow: 2px 5px 5px 0px rgba(0, 0, 0, 0.5);
+    }
+    
+    table {
+        margin-top: 20px;
+        width: 100%;
+    }
+    td,th {
+        padding: 8px;
+        border: 1.5px solid rgb(0, 0, 0);
+        text-align: center;
+    }
+    th{
+      background-color: rgb(212, 212, 212);
+    }
+    .note {
+        width: 90px;
+        padding: 15px;
+        margin: 10px 0;
+        border: 1px solid rgb(255, 255, 255);
+        background-color: rgb(255, 255, 255);
+        border-radius: 10px;
+        font-size: 15px;
+    }
+    
+    tfoot td {
+        height: 50px;
+        font-weight: bold;
+        color: rgb(229, 140, 32);
+        font-size: 20px;
+    }
+    
+    button {
+        margin-top: 20px;
+        background-color: rgb(41, 98, 172);
+        color: rgb(255, 254, 254);
+        width: 70%;
+        height: 40px;
+        border-radius: 18px;
+        border: none;
+        cursor: pointer;
+        font-size: 16px;
+    }
+    button:hover {
+        background-color: rgb(7, 113, 234);
+    }
+    </style>
+</head>
+<body>
+  <h1 style="color:red; font-size: 17px;">"Une remarque Monsieur Il faut entrer les notes et calculer 
+    le moyenne avant de remplir les informations personnelles puis tu peux generer le pdf !!"</h1>
+    <div class="container">
+        <div id="dvContainer">
+        <form>
+            <h1>Bulletin</h1>
+            <div class="logo">
+                <img src="download.jpeg" alt="Logo">
+            </div>
+            <div>
+           <center> <input type="text" name="nom" placeholder="Nom" required>
+            <input type="text" name="prenom" placeholder="Prenom" required></center>
+        </div>
+           <center> <input type="text" name="cne" placeholder="CNE" required></center>
+          
+            <table>
+                <thead>
+                    <tr>
+                        <th>Matière</th>
+                        <th>Note (/20)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>WEB</td>
+                        <td><input class="note" name="note1" id="note1"  type="number" placeholder="../20"required></td>
+                  </tr>
+                  <tr>
+                  <td>RESEAU</td>
+                  <td><input class="note" name="note2" id="note2" type="number" placeholder="../20" required></td>
+                  </tr>
+                  <tr>
+                  <td>DATA BASE</td>
+                  <td><input class="note" name="note3" id="note3"  type="number" placeholder="../20" required></td>
+                  </tr>
+                  <tr>
+                  <td>MATHEMATIQUES</td>
+                  <td><input class="note" name="note4" id="note4" type="number" placeholder="../20" required></td>
+                  </tr>
+                  </tbody>
+                  <tfoot>
+                  <tr>
+                  <td>MOYEN</td>
+                  <td><span id="moyenne"></span></td>
+                  </tr>
+                  </tfoot>
+                  </table>
+                 <center> <button onclick="Moyenne()">Moyenne</button>
+                    <button onclick="openCalculator()">Calculator</button>
+                  <button  id="btnPrint">Generate PDF</button></center>
+                </div>
+               </form> 
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+  $(document).on("click", "#btnPrint", function () {
+    var nom = $("input[name='nom']").val();
+    var prenom = $("input[name='prenom']").val();
+    var cne = $("input[name='cne']").val();
+
+    var notes = [];
+    $("input[name^='note']").each(function () {
+      notes.push($(this).val());
+    });
+    var moyenne = $("#moyenne").text();
+    var moyenne = parseFloat($("#moyenne").text()); 
+    var mention = getMention(moyenne);
+    var printWindow = window.open('', '', 'height=500,width=1001');
+    printWindow.document.write('<html><head>');
+    printWindow.document.write('<style>');
+    printWindow.document.write(`
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size:10px;
+      }
+
+      form {
+        border: 1px solid rgb(179, 189, 119);
+        background-color: rgb(255, 255, 255);
+        border-radius: 10px;
+        padding: 20px;
+        margin: 10px;
+      }
+
+      h1 {
+        font-size: 30px;
+        text-align: center;
+        margin-bottom: 20px;
+       
+      }
+
+      .logo {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+      }
+
+      .logo img {
+        width: 450px;
+        height: 90px;
+      }
+      
+    table {
+        margin-top: 20px;
+        width: 100%;
+        border-collapse: collapse;
+    }
+    td,th {
+        padding: 8px;
+        border: 1.5px solid rgb(0, 0, 0);
+        text-align: center;
+    }
+    th{
+      background-color: rgb(212, 212, 212);
+    }
+
+    tfoot td {
+        height: 30px;
+        font-weight: bold;
+        color: rgb(136, 105, 66);
+        font-size: 15px;
+    }
+    p{
+      position: absolute;
+      top: 1000px;
+      left:0px;
+    }
+    `);
+    printWindow.document.write('</style>');
+    printWindow.document.write('</head><body>');
+    printWindow.document.write('<div class="container">');
+    printWindow.document.write('<form>');
+    printWindow.document.write('<h1>Bulletin</h1>');
+    printWindow.document.write('<div class="logo">');
+    printWindow.document.write('<img src="download.jpeg" alt="Logo">');
+    printWindow.document.write('</div>');
+    printWindow.document.write('<h3>Nom: ' + nom + '</h3>');
+    printWindow.document.write('<h3>Prénom: ' + prenom + '</h3>');
+    printWindow.document.write('<h3>CNE: ' + cne + '</h3>');
+    printWindow.document.write('<table>');
+    printWindow.document.write('<thead>');
+    printWindow.document.write('<tr>');
+    printWindow.document.write('<th>Matière</th>');
+    printWindow.document.write('<th>Note (/20)</th>');
+    printWindow.document.write('</tr>');
+    printWindow.document.write('</thead>');
+    printWindow.document.write('<tbody>');
+    printWindow.document.write('<tr>');
+    printWindow.document.write('<td>WEB</td>');
+    printWindow.document.write('<td>' + notes[0] + '</td>');
+    printWindow.document.write('</tr>');
+    printWindow.document.write('<tr>');
+    printWindow.document.write('<td>RESEAU</td>');
+    printWindow.document.write('<td>' + notes[1] + '</td>');
+    printWindow.document.write('</tr>');
+    printWindow.document.write('<tr>');
+    printWindow.document.write('<td>DATA BASE</td>');
+    printWindow.document.write('<td>' + notes[2] + '</td>');
+    printWindow.document.write('</tr>');
+    printWindow.document.write('<tr>');
+    printWindow.document.write('<td>MATHEMATIQUES</td>');
+    printWindow.document.write('<td>' + notes[3] + '</td>');
+    printWindow.document.write('</tr>');
+    printWindow.document.write('</tbody>');
+    printWindow.document.write('<tfoot>');
+    printWindow.document.write('<tr>');
+    printWindow.document.write('<td>MOYEN</td>');
+    printWindow.document.write('<td>'+ moyenne +'</td>');
+    printWindow.document.write('<tr>');
+    printWindow.document.write('<td>MENTION</td>');
+    printWindow.document.write('<td>' + mention + '</td>'); 
+    printWindow.document.write('</tr></tfoot>');
+    printWindow.document.write('</table>');
+    printWindow.document.write('</form>');
+    printWindow.document.write('</div>');
+    printWindow.document.write('</body></html>');
+    printWindow.document.close();
+    printWindow.print();
+});
+</script>
+<script>
+function Moyenne(){
+var WEB = parseInt(document.getElementById('note1').value);
+var RESEAU = parseInt(document.getElementById('note2').value);
+var DATA_BASE= parseInt(document.getElementById('note3').value);
+var MATHEMATIQUES = parseInt(document.getElementById('note4').value);
+
+var somation = WEB + RESEAU + DATA_BASE + MATHEMATIQUES;
+var Moyenne = somation / 4 ;
+document.getElementById('moyenne').innerHTML = Moyenne;
+return false;
+            }
+function getMention(moyenne) {
+if (moyenne >= 16) {
+return "Très bien";
+} else if (moyenne >= 14) {
+return "Bien";
+} else if (moyenne >= 12) {
+return "Assez bien";
+} else if (moyenne >= 10) {
+return "Passable";
+} else {
+return "Insuffisant";
+}
+}
+function openCalculator() {
+  window.open('Calculater.html', '_blank');
+}
+
+</script>
+</body>
+</html>
